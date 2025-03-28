@@ -5,34 +5,23 @@ The Netflix dataset contains 7,787 records of shows and movies available on the 
 
 # Features 
 The dataset includes the following columns:
-show_id: Unique identifier for each show/movie
-
-type: Whether it's a "Movie" or "TV Show"
-
-title: Name of the show or movie
-
-director: Name of the director (some missing values)
-
-cast: List of main actors (some missing values)
-
-country: Country of origin (some missing values)
-
-date_added: Date when it was added to Netflix
-
-release_year: Year of release
-
-rating: Content rating (e.g., PG-13, TV-MA)
-
-duration: Duration of the movie or number of seasons for TV shows
-
-listed_in: Categories/genres it belongs to
-
-description: A brief summary of the show or movie
+- `show_id`: Unique identifier for each show/movie
+- `type`: Whether it's a "Movie" or "TV Show"
+- `title`: Name of the show or movie
+- `director`: Name of the director (some missing values)
+- `cast`: List of main actors (some missing values)
+- `country`: Country of origin (some missing values)
+- `date_added`: Date when it was added to Netflix
+- `release_year`: Year of release
+- `rating`: Content rating (e.g., PG-13, TV-MA)
+- `duration`: Duration of the movie or number of seasons for TV shows
+- `listed_in`: Categories/genres it belongs to
+- `description`: A brief summary of the show or movie
 
 # Conclusion
 The analysis of Netflix’s content catalog reveals key insights into the platform’s content distribution and strategy. The dataset provides valuable information on content trends, such as the increasing number of shows and movies added in recent years, the diversity in content genres, and variations in ratings and duration.
 
-Key observations include:
+### Key observations include:
 
 Regional Content Trends: The dataset highlights how Netflix diversifies its offerings based on regional preferences, with content spanning multiple countries.
 
