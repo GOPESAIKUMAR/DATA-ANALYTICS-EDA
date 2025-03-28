@@ -1,155 +1,43 @@
-# 📊 Netflix Data Analysis
+# Netflix Data Analysis
 
-This project analyzes Netflix's dataset to uncover trends and patterns in content offerings across different countries, genres, ratings, and years. The goal is to gain insights into Netflix’s content strategy and how it caters to different demographics globally.
+# Overview
+The Netflix dataset contains 7,787 records of shows and movies available on the platform. It includes key details such as title, director, cast, country of origin, release year, date added to Netflix, content rating, duration, genre, and a brief description. This dataset helps analyze Netflix's content library, trends, and strategies over time.
 
-## 📝 Project Overview
-
-This analysis of Netflix data provides insights into the distribution and growth of movies and TV shows on the platform. The project focuses on understanding content expansion by category and country, analyzing target demographics, and identifying the most popular genres and ratings across different regions. 
-
-This project is part of a series: **Project 9/30**.
-
-## 💡 Analysis Proposal
-
-### Objectives:
-1. **Content Categorization**: Identify the most common genres and types (e.g., Comedies, Dramas) on Netflix.
-2. **Demographic Targeting**: Analyze if Netflix targets specific age groups and how this varies by country.
-3. **Country-Based Analysis**: Compare the content offerings of major Netflix markets, particularly the USA and India.
-4. **Growth Trends**: Track content additions over time to examine growth in Netflix’s offerings.
-
-## 📄 Dataset Overview
-
+# Features 
 The dataset includes the following columns:
-- `show_id`: Unique identifier for each show
-- `type`: Movie or TV Show
-- `title`: Title of the show
-- `director`: Director's name
-- `cast`: Cast list
-- `country`: Country of production
-- `date_added`: Date added to Netflix
-- `release_year`: Original release year
-- `rating`: Audience rating
-- `duration`: Duration of the content (minutes for movies, seasons for TV shows)
-- `listed_in`: Categories/genres
-- `description`: Show’s description
+show_id: Unique identifier for each show/movie
 
-### Data Source
-Dataset is available on [Kaggle](https://www.kaggle.com/shivamb/netflix-shows).
+type: Whether it's a "Movie" or "TV Show"
 
----
+title: Name of the show or movie
 
-## 🔍 Exploratory Data Analysis (EDA)
+director: Name of the director (some missing values)
 
-1. **Missing Data**  
-   - Visualized missing values using a heatmap and handled them by removing rows with essential information missing.
+cast: List of main actors (some missing values)
 
-   ```python
-   import seaborn as sns
-   import matplotlib.pyplot as plt
+country: Country of origin (some missing values)
 
-   plt.figure(figsize=(10,6))
-   sns.heatmap(netflix_data.isnull(), cbar=False, cmap="viridis")
-   plt.title("Heatmap of Missing Values")
-   ```
+date_added: Date when it was added to Netflix
 
-2. **Content Growth by Country**
-   - Analyzed content growth in the USA and India by year.
+release_year: Year of release
 
-   ```python
-   usa_india_data = netflix_data[netflix_data['country'].isin(['United States', 'India'])]
-   sns.lineplot(data=usa_india_data, x='year_added', hue='country', estimator=len)
-   ```
+rating: Content rating (e.g., PG-13, TV-MA)
 
-3. **Genre Analysis**
-   - Counted the number of shows in each genre to identify the most popular genres.
+duration: Duration of the movie or number of seasons for TV shows
 
-   ```python
-   genre_count = netflix_data['listed_in'].str.split(',').explode().value_counts()
-   sns.barplot(x=genre_count.values, y=genre_count.index)
-   ```
+listed_in: Categories/genres it belongs to
 
----
+description: A brief summary of the show or movie
 
-## 🧑‍💻 Key Queries and Code
+# Conclusion
+The analysis of Netflix’s content catalog reveals key insights into the platform’s content distribution and strategy. The dataset provides valuable information on content trends, such as the increasing number of shows and movies added in recent years, the diversity in content genres, and variations in ratings and duration.
 
-1. **Movies with Type "Comedies" or Country "United Kingdom"**
+Key observations include:
 
-   ```python
-   netflix_data[(netflix_data['type'] == 'Movie') & 
-                (netflix_data['listed_in'].str.contains('Comedies')) | 
-                (netflix_data['country'] == 'United Kingdom')]
-   ```
+Regional Content Trends: The dataset highlights how Netflix diversifies its offerings based on regional preferences, with content spanning multiple countries.
 
-2. **Movies/Shows Starring "Tom Cruise"**
+Growth of Original Content: By examining the year-wise distribution, we can see how Netflix has expanded its library, particularly in original productions.
 
-   ```python
-   tom_cruise_count = netflix_data[netflix_data['cast'].str.contains('Tom Cruise', na=False)].shape[0]
-   ```
+Audience Targeting: Content ratings indicate how Netflix caters to different age groups, ensuring a mix of family-friendly and mature content.
 
-3. **Different Ratings on Netflix**
-
-   ```python
-   ratings = netflix_data['rating'].unique()
-   ```
-
-4. **Movies with "TV-14" Rating in Canada**
-
-   ```python
-   canada_tv14 = netflix_data[(netflix_data['rating'] == 'TV-14') & 
-                              (netflix_data['country'] == 'Canada') & 
-                              (netflix_data['type'] == 'Movie')].shape[0]
-   ```
-
-5. **TV Shows with "R" Rating After 2018**
-
-   ```python
-   tv_shows_r = netflix_data[(netflix_data['type'] == 'TV Show') & 
-                             (netflix_data['rating'] == 'R') & 
-                             (netflix_data['release_year'] > 2018)].shape[0]
-   ```
-
-6. **Maximum Duration of a Movie/Show**
-
-   ```python
-   max_duration = netflix_data['duration'].max()
-   ```
-
-7. **Country with the Most TV Shows**
-
-   ```python
-   tv_shows_country = netflix_data[netflix_data['type'] == 'TV Show']['country'].value_counts().idxmax()
-   ```
-
-8. **Sorting Dataset by Year**
-
-   ```python
-   sorted_data = netflix_data.sort_values(by='release_year')
-   ```
-
----
-
-## 📈 Key Visualizations
-
-1. **Growth of Content in USA vs India**  
-   Analyzed the number of movies and shows added to Netflix by year for the USA and India, highlighting Netflix's content expansion in major markets.
-
-2. **Genre Distribution**  
-   Visualized the top genres across the entire Netflix library, showing audience preference by genre.
-
-3. **Rating Distribution by Content Type**  
-   Created a bar plot to illustrate how ratings vary between movies and TV shows, giving insights into Netflix's target demographics.
-
-4. **Duration Analysis**  
-   Displayed a histogram of content duration, highlighting the most common lengths for movies and TV shows on the platform.
-
----
-
-## ✍️ Conclusion
-
-This Netflix data analysis reveals significant trends, such as the dominance of the USA and India in content volume, popular genres and ratings, and a strategic approach to targeting different demographics across countries. The data indicates that Netflix has grown its library considerably over the years, with substantial expansions in both popular and niche genres. This analysis provides a clearer understanding of Netflix’s content distribution strategy and audience targeting efforts.
-
----
-
-## 👤 Author
-
-[![GitHub](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shaun-mia)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/shaun-mia/)
+Influence of Directors and Cast: Popular directors and actors play a significant role in content selection and viewership trends.
