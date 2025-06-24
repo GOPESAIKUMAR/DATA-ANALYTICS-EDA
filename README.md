@@ -1,6 +1,5 @@
 # 📊 Data Analytics 
 
-![Status](https://img.shields.io/badge/project-active-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Tools](https://img.shields.io/badge/tools-SQL%20|%20Python%20|%20PowerBI-orange)
 
