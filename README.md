@@ -1,4 +1,4 @@
-# 📊 Data Analytics Portfolio
+# 📊 Data Analytics 
 
 ![Status](https://img.shields.io/badge/project-active-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
